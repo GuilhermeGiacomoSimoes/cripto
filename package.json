@@ -1,0 +1,30 @@
+{
+	"name": "cripto",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node dest/server.js",
+		"dev": "ts-node src/server.ts",
+		"build": "tsc",
+		"test": "jest"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^5.1.0",
+		"mysql2": "^3.14.2"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.3",
+		"@types/jest": "^30.0.0",
+		"@types/node": "^24.0.15",
+		"jest": "^30.0.4",
+		"ts-jest": "^29.4.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.8.3"
+	}
+}
