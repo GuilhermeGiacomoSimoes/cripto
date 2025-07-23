@@ -41,4 +41,12 @@ export class RepositoryInMemory implements IRepository {
 
 		return user;
 	}
+
+	async searchUser(search: string): Promise<UserEntity[]> {
+		const res = this._users.filter((user) =>
+			user.name.toLowerCase().includes(search.toLowerCase())
+		);
+
+		return res;
+	}
 }

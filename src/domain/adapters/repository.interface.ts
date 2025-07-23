@@ -5,4 +5,5 @@ export interface IRepository {
 	getUserByEmail(email: string): Promise<UserEntity | null>;
 	getUserById(id: string): Promise<UserEntity | null>;
 	updateUser(user: UserEntity): Promise<UserEntity>;
+	searchUser(search: string): Promise<UserEntity[]>;
 }
