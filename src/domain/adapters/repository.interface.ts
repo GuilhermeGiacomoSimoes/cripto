@@ -17,4 +17,5 @@ export interface IRepository {
 		time: string
 	): Promise<CoinHistoryEntity | null>;
 	updateCoin(coin: CoinEntity): Promise<void>;
+	getCoinByTime(coinID: string, time: string): Promise<CoinHistoryEntity[]>;
 }

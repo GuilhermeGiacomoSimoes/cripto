@@ -98,4 +98,22 @@ export class RepositoryInMemory implements IRepository {
 			}
 		}
 	}
+
+	async getCoinByTime(
+		coinID: string,
+		time: string
+	): Promise<CoinHistoryEntity[]> {
+		const historys = [];
+
+		for (let history of this._coinsHistory) {
+			if (
+				history.coindiD == coinID &&
+				Number(history.timestamp) >= Number(time)
+			) {
+				historys.push(history);
+			}
+		}
+
+		return historys;
+	}
 }

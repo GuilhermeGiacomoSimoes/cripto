@@ -4,13 +4,16 @@ import {
 	createUser,
 	getAndSaveCoins,
 	getAndSaveHistory,
+	getHistory,
 	getUser,
+	listCoins,
 	searchUser,
 	updateUser,
 } from "../di/module";
 import { ERetCode } from "../domain/common/error-code.enum";
 import { UserUpdateDTO } from "../domain/usecase/dto/update-user.dto";
 import { app } from "../infra/drivers/app";
+import { TRange } from "../domain/business/service/get-history.service";
 
 app.use(express.json());
 
@@ -43,8 +46,21 @@ app.post("/get-save-coins", async (req, res) => {
 	return res.status(httpcode(ret.code)).json(ret);
 });
 
-app.post("/get-save-history", async (req, res) => {
-	const ret = await getAndSaveHistory();
+app.post("/get-save-history/:id", async (req, res) => {
+	const id: string = req.params.id;
+	const ret = await getAndSaveHistory(id);
+	return res.status(httpcode(ret.code)).json(ret);
+});
+
+app.get("/list-coins", async (req, res) => {
+	const ret = await listCoins();
+	return res.status(httpcode(ret.code)).json(ret);
+});
+
+app.get("/history", async (req, res) => {
+	const coinID: string = req.query.id as string;
+	const range: TRange = req.query.range as TRange;
+	const ret = await getHistory(coinID, range);
 	return res.status(httpcode(ret.code)).json(ret);
 });
 

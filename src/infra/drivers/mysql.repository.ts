@@ -112,4 +112,16 @@ export class MySQLRepository implements IRepository {
 			marketcap: coin.marketcap,
 		});
 	}
+
+	async getCoinByTime(
+		coinID: string,
+		time: string
+	): Promise<CoinHistoryEntity[]> {
+		const history = await db("coin_history")
+			.where("timestamp", ">=", time)
+			.andWhere("coin_id", coinID)
+			.select("coin_id as coindiD", "value", "timestamp");
+
+		return history;
+	}
 }
