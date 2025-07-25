@@ -1,4 +1,3 @@
-import { FieldPacket } from "mysql2";
 import { IRepository } from "../../domain/adapters/repository.interface";
 import { CoinHistoryEntity } from "../../domain/repository/entitys/coin-history.entity";
 import { CoinEntity } from "../../domain/repository/entitys/coin.entity";
@@ -93,7 +92,7 @@ export class MySQLRepository implements IRepository {
 		time: string
 	): Promise<CoinHistoryEntity | null> {
 		const coin = await db("coin_history")
-			.select("coin_id as coinID", "value", "timestamp")
+			.select("coin_id as coindiD", "value", "timestamp")
 			.where({
 				coin_id: id,
 				timestamp: time,
