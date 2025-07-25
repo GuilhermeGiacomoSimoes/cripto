@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node dest/server.js",
-		"dev": "ts-node src/server.ts",
+		"dev": "dotenv -e .env ts-node src/server.ts",
 		"build": "tsc",
 		"test": "jest",
 		"migrate:make": "knex migrate:make --knexfile src/infra/drivers/knexfile.ts -x ts",
@@ -30,6 +30,7 @@
 		"@types/jest": "^30.0.0",
 		"@types/knex": "^0.15.2",
 		"@types/node": "^24.0.15",
+		"dotenv-cli": "^9.0.0",
 		"jest": "^30.0.4",
 		"ts-jest": "^29.4.0",
 		"ts-node": "^10.9.2",
