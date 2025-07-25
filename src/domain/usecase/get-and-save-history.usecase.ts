@@ -17,7 +17,7 @@ export class GetAndSaveHistoryUseCase {
 		private readonly http: IHttpRequestCoins
 	) {}
 
-	async execute(): Promise<TReturn<TRetData | undefined>> {
+	async execute(id: string): Promise<TReturn<TRetData | undefined>> {
 		const coins = await this.repository.getAllCoins();
 
 		let retData: TRetData | undefined = {
@@ -25,20 +25,18 @@ export class GetAndSaveHistoryUseCase {
 			updateCoin: [],
 		};
 
-		for (let coin of coins) {
-			const historyOneDay = await this.http.getHistory(coin.id);
-			if (historyOneDay) {
-				const ret = await saveHistoryService(historyOneDay, this.repository);
-				if (ret.code != ERetCode.SUCCESS && ret.data) {
-					retData.savehistory.push(...ret.data);
-				} else {
-					const err = await updateCoin(historyOneDay, this.repository);
-					if (err) {
-						retData.updateCoin.push({
-							code: err,
-							message: errorDescription(err),
-						});
-					}
+		const historyOneDay = await this.http.getHistory(id);
+		if (historyOneDay) {
+			const ret = await saveHistoryService(historyOneDay, this.repository);
+			if (ret.code != ERetCode.SUCCESS && ret.data) {
+				retData.savehistory.push(...ret.data);
+			} else {
+				const err = await updateCoin(historyOneDay, this.repository);
+				if (err) {
+					retData.updateCoin.push({
+						code: err,
+						message: errorDescription(err),
+					});
 				}
 			}
 		}

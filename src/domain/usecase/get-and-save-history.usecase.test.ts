@@ -8,6 +8,7 @@ describe("get and save history - usecase", () => {
 	const rep = new RepositoryInMemory();
 	const http = new HttpRequestCoinsInMemory();
 	const uc = new GetAndSaveHistoryUseCase(rep, http);
+	const coinsIDs = ["000-capital", "0chain"];
 
 	beforeAll(async () => {
 		const coins = await http.getCoins();
@@ -16,8 +17,8 @@ describe("get and save history - usecase", () => {
 		}
 	});
 
-	test("should return SUCCESS for 0000-capital", async () => {
-		expect(await uc.execute()).toEqual({
+	test.each(coinsIDs)("should return SUCCESS for 0000-capital", async (id) => {
+		expect(await uc.execute(id)).toEqual({
 			code: ERetCode.SUCCESS,
 			message: "SUCCESS",
 		});

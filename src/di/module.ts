@@ -28,13 +28,13 @@ export async function getAndSaveCoins(): Promise<TReturn<TRet[]>> {
 	return await uc.execute();
 }
 
-export async function getAndSaveHistory(): Promise<
-	TReturn<TRetData | undefined>
-> {
+export async function getAndSaveHistory(
+	id: string
+): Promise<TReturn<TRetData | undefined>> {
 	const rep = new MySQLRepository();
 	const http = new CoinGeckoHttp();
 	const uc = new GetAndSaveHistoryUseCase(rep, http);
-	return await uc.execute();
+	return await uc.execute(id);
 }
 
 export async function getUser(id: string): Promise<TReturn<UserEntity>> {
