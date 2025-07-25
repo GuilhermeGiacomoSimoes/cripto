@@ -1,8 +1,12 @@
 import { IRepository } from "../../adapters/repository.interface";
 import { UserEntity } from "../../repository/entitys/user.entity";
+import { CoinHistoryEntity } from "../entitys/coin-history.entity";
+import { CoinEntity } from "../entitys/coin.entity";
 
 export class RepositoryInMemory implements IRepository {
-	_users: UserEntity[] = [];
+	private _users: UserEntity[] = [];
+	private _coins: CoinEntity[] = [];
+	private _coinsHistory: CoinHistoryEntity[] = [];
 
 	async getUserById(id: string): Promise<UserEntity | null> {
 		for (let user of this._users) {
@@ -48,5 +52,50 @@ export class RepositoryInMemory implements IRepository {
 		);
 
 		return res;
+	}
+
+	async saveCoins(coin: CoinEntity): Promise<void> {
+		this._coins.push(coin);
+	}
+
+	async saveHistory(coinHistory: CoinHistoryEntity): Promise<void> {
+		this._coinsHistory.push(coinHistory);
+	}
+
+	async getCoin(id: string): Promise<CoinEntity | null> {
+		for (let coin of this._coins) {
+			if (coin.id == id) {
+				return coin;
+			}
+		}
+
+		return null;
+	}
+
+	async getAllCoins(): Promise<CoinEntity[]> {
+		return this._coins;
+	}
+
+	async getHistoryByIdTime(
+		id: string,
+		time: string
+	): Promise<CoinHistoryEntity | null> {
+		for (let history of this._coinsHistory) {
+			if (history.coindiD == id && history.timestamp == time) {
+				return history;
+			}
+		}
+
+		return null;
+	}
+
+	async updateCoin(newCoin: CoinEntity): Promise<void> {
+		for (let coin of this._coins) {
+			if (coin.id == newCoin.id) {
+				coin.biggerValue = newCoin.biggerValue;
+				coin.currentValue = newCoin.currentValue;
+				coin.lowestValue = newCoin.lowestValue;
+			}
+		}
 	}
 }
