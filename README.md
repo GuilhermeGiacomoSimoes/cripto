@@ -66,7 +66,7 @@ Ela retorna o id do usuario cadastrado.<br>
 
 `GET - /user/:userid` Essa rota vai retornar um ususario pelo seu id
 
-`PUT - /user` Essa rota vai atualizar um usuario
+`PUT - /user` Essa rota vai atualizar um usuario<br>
 Body:
 
 ```
@@ -86,7 +86,7 @@ Caso voce rode ela mais de uma vez, ela nao vai inserir as criptos que ja foram 
 
 `GET /list-coins` Essa rota lista todas as criptos que foram armazenadas.<br>
 
-`POST - get-save-history/:id` Essa rota obtem o historico das ultimas 24h de uma determinada cripto coin.<br>
+`POST - get-save-history/:id` Essa rota obtem o historico das ultimas 24h de uma determinada cripto coin da api da coingecko e armazena na sua base de dados. (ela nao retorna o historico armazenado, para isso veja a proxima requisicao)<br>
 O historico tem preco da cripto a cada 5 minutos.<br>
 Ele nao vai inserir historicos ja inseridos.<br>
 A ideia é termos algo como um `rundeck` que roda 1 vez por dia e atualiza esse historico diariamente.<br>
