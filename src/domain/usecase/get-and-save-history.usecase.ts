@@ -6,7 +6,7 @@ import { updateCoin } from "../business/service/update-coin.service";
 import { ERetCode } from "../common/error-code.enum";
 import { TReturn } from "./dto/return.type";
 
-type TRetData = {
+export type TRetData = {
 	savehistory: any[];
 	updateCoin: any[];
 };
