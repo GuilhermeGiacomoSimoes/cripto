@@ -20,6 +20,11 @@ Para rodar o sistema localmente (apos ter clonado o repositorio), primeiro voce 
 npm run i
 ```
 
+### criar seu .env
+
+Na raiz do projeto, deixei um .env.example como exemplo do que deve ser preenchido no seu .env.<br>
+Crie um arquivo chamado ".env" na raiz do projeto e insira la as suas configuracoes de conexao com o banco de dados conforme pede o examplo.<br>
+
 ### Criar a base de dados
 
 Agora voce deve se conectar ao seu mysql (que ja deve estar devidamente instalado e configurado) e criar a base de dados chamada "cripto".
