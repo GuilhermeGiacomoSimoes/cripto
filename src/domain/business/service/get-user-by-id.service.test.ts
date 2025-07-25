@@ -29,7 +29,7 @@ describe("get user by id - service", () => {
 	test("should return that client do not exists", async () => {
 		expect(await getUserByIDService("invalid-id", rep)).toEqual({
 			code: ERetCode.USER_NOT_EXISTS,
-			message: "UPDATE_USER.USER_NOT_EXISTS",
+			message: "GENERIC.USER_NOT_EXISTS",
 		});
 	});
 

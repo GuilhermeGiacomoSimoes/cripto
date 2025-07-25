@@ -9,6 +9,11 @@ const description: Record<ERetCode, string> = {
 	5: "GENERIC.USER_NOT_EXISTS",
 	6: "UPDATE_USER.USER_NOT_UPDATED",
 	7: "GET_USER.USER_NOT_FOUND",
+	8: "SAVE_COIN.PARTIAL_ERROR",
+	9: "SAVE_COIN.COIN_ALREADY_INCLUDED",
+	10: "SAVE_HISTORY.COIN_NOT_FOUND",
+	11: "SAVE_HISTORY.HISTORY_ALREADY_SAVED",
+	12: "SAVE_HISTORY.EMPTY_HISTORY",
 };
 
 export function errorDescription(code: ERetCode): string {

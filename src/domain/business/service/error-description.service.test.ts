@@ -39,4 +39,34 @@ describe("error description - service", () => {
 			"UPDATE_USER.USER_NOT_UPDATED"
 		);
 	});
+
+	test("should return a 'SAVE_COIN.PARTIAL_ERROR'", () => {
+		expect(errorDescription(ERetCode.PARTIAL_ERROR)).toBe(
+			"SAVE_COIN.PARTIAL_ERROR"
+		);
+	});
+
+	test("should return a 'SAVE_COIN.COIN_ALREADY_INCLUDED'", () => {
+		expect(errorDescription(ERetCode.COIN_ALREADY_INCLUDED)).toBe(
+			"SAVE_COIN.COIN_ALREADY_INCLUDED"
+		);
+	});
+
+	test("should return a 'SAVE_HISTORY.COIN_NOT_FOUND'", () => {
+		expect(errorDescription(ERetCode.COIN_NOT_FOUND)).toBe(
+			"SAVE_HISTORY.COIN_NOT_FOUND"
+		);
+	});
+
+	test("should return a 'SAVE_HISTORY.HISTORY_ALREADY_SAVED'", () => {
+		expect(errorDescription(ERetCode.HISTORY_ALREADY_SAVED)).toBe(
+			"SAVE_HISTORY.HISTORY_ALREADY_SAVED"
+		);
+	});
+
+	test("should return a 'SAVE_HISTORY.EMPTY_HISTORY'", () => {
+		expect(errorDescription(ERetCode.EMPTY_HISTORY)).toBe(
+			"SAVE_HISTORY.EMPTY_HISTORY"
+		);
+	});
 });
